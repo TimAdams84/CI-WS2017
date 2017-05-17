@@ -7,7 +7,7 @@ public class Neuron {
 	
 public Neuron(double inputWeight) {
 	this.inputWeight = inputWeight;
-	this.output = inputWeight* //fermi funktion * "input;
+	this.output = inputWeight; //fermi funktion * "input;
 }
 	
 	
