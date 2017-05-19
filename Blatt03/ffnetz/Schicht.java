@@ -1,4 +1,4 @@
-package hardcode;
+package ffnetz;
 
 public class Schicht {
 
