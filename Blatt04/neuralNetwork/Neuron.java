@@ -7,7 +7,6 @@ public class Neuron {
 	double input;
 	double output;
 	ActivationFunction activationFunction;
-	double error;
 	double delta;
 	
 	ArrayList<Connection> inConnections;

@@ -2,6 +2,7 @@ package neuralNetwork;
 
 public class OutputNeuron extends Neuron {
 	
+	double error;
 	
 	public OutputNeuron(double input, double output,
 			ActivationFunction activationFunction) {

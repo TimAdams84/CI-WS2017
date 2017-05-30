@@ -19,8 +19,19 @@ public class Network {
 		}
 	}
 	
-
+	public double getOutputError(){
+		double sumError = 0;
+		for (Neuron neuron :layer.get(layer.size()-1).getNeuronen()){
+			sumError += ((OutputNeuron)neuron).error;
+		}
+	return sumError;
+	}
 	
+	public void backpropagate(double expected){
+		for (Neuron neuron :layer.get(layer.size()-1).getNeuronen()){
+			sumError += ((OutputNeuron)neuron).error;
+		}
+	}
 	
 	public double getSingleOutput(){
 		return layer.get(layer.size()-1).getNeuronen().get(0).output;
