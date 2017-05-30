@@ -7,6 +7,12 @@ public class Neuron {
 	double input;
 	double output;
 	ActivationFunction activationFunction;
+	double error;
+	double delta;
+	
+	ArrayList<Connection> inConnections;
+	ArrayList<Connection> outConnections;
+	
 	
 	public Neuron(double input, double output,
 			ActivationFunction activationFunction) {
@@ -15,10 +21,6 @@ public class Neuron {
 		this.output = output;
 		this.activationFunction = activationFunction;
 	}
-
-	ArrayList<Connection> inConnections;
-	ArrayList<Connection> outConnections;
-	
 	
 	
 	public void addInConnection(Neuron from,double weight){
@@ -29,11 +31,27 @@ public class Neuron {
 		this.inConnections.add(new Connection(this, to, weight));
 	}
 	
-	public void calculateouput(){
+	public void calculateOuput(){
 		input = 0;
 		for (Connection connection : inConnections) {
 			input += connection.from.output*connection.weight;
 		}
+		output = activationFunction.calculate(input);
 	}
+	
+	public void backpropagate(double learningRate){
+		double temp= 0;
+		for (Connection connection : outConnections) {
+			temp = connection.weight*connection.to.delta;
+		}
+		delta = activationFunction.differentiate(input) * temp;
+	}
+	
+	public void refresh(double learningRate){
+		for (Connection connection : inConnections) {
+			connection.weight -= learningRate * input * delta;
+		}
+	}
+	
 	
 }
