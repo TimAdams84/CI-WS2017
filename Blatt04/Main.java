@@ -5,8 +5,8 @@ public class Main {
 	public static void main(String[] args) {
 		
 		
-		//[Klasse][x1/x2][y]
-		double[][] 
+		double[][] xWerte = [2][2];
+		
 		
 		
 		
