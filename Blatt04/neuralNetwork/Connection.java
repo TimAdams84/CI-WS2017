@@ -1,4 +1,4 @@
-package rbfnetz;
+package neuralNetwork;
 
 public class Connection {
 	

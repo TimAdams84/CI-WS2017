@@ -1,4 +1,4 @@
-package rbfnetz;
+package neuralNetwork;
 
 public interface IntegrationFunction extends Function {
 	

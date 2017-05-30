@@ -1,4 +1,4 @@
-package rbfnetz;
+package neuralNetwork;
 
 public interface ActivationFunction extends Function {
 	 public double differentiate(double input);
