@@ -23,6 +23,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/pelzerm/git/CI-WS2017/lib/commons-math3-3.6.1.jar"/>
+	<classpathentry kind="lib" path="lib/commons-math3-3.6.1.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
