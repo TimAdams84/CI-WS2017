@@ -43,6 +43,7 @@ public class Neuron {
 			temp = connection.weight*connection.to.delta;
 		}
 		delta = activationFunction.differentiate(input) * temp;
+		refresh(learningRate);
 	}
 	
 	public void refresh(double learningRate){
