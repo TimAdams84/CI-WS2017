@@ -47,13 +47,20 @@ public class Main {
 			center++;
 		}
 			
+		
+		
+		// initialisieren des RBF Netzes
 		Network network = new Network(0.03);
 		
 		
 		
+		//Netzausgabe #test
+		
+		double[][] classoutput1 = new double [2][300];
+		double[][] classoutput2 = new double [2][300];
 		
 		
-		
+		//plottet Datebpunkte und Zentren
 		
 		DefaultXYDataset dataset = new DefaultXYDataset();
 		dataset.addSeries("Class 1", class1);
