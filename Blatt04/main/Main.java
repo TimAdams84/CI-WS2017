@@ -80,17 +80,32 @@ public class Main {
 			network.getLayer(1).getNeuron(i).addOutConnection(network.getLayer(2).getNeuron(0),);
 		}
 		//Netzausgabe #test
+
+		double[][] classoutput1 = new double [2][301*301];
 		
-		double[][] classoutput1 = new double [2][300];
-		double[][] classoutput2 = new double [2][300];
+		for (int x1=0;x1<301;x1++) {
+		    double x1Coord = -15+x1*0.1;
+		    for (int x2=0;x2<301;x2++) {
+		        double x2Coord = -15+x2*0.1;
+		        classoutput1[0][x1*301+x2] = x1Coord;
+		        classoutput1[1][x1*301+x2] = x2Coord;
+		    }
+		}
 		
-		
-		//plottet Datebpunkte und Zentren
 		
 		DefaultXYDataset dataset = new DefaultXYDataset();
 		dataset.addSeries("Class 1", class1);
 		dataset.addSeries("Class 2", class2);
 		dataset.addSeries("Centers",centers);
+		dataset.addSeries("Class 12", classoutput1);
+		
+		
+		//plottet Datebpunkte und Zentren
+		
+//		DefaultXYDataset dataset = new DefaultXYDataset();
+//		dataset.addSeries("Class 1", class1);
+//		dataset.addSeries("Class 2", class2);
+//		dataset.addSeries("Centers",centers);
 
 
 		JFreeChart chart = ChartFactory.createScatterPlot("Plot", "X1", "X2", dataset);
