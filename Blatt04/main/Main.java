@@ -72,14 +72,13 @@ public class Main {
 		//weights input->hidden
 		for(int i=0; i<30; i++){
 			network.getLayer(0).getNeuron(0).addOutConnection(network.getLayer(1).getNeuron(i), centers[0][i]);
-			network.getLayer(0).getNeuron(0).addOutConnection(network.getLayer(1).getNeuron(i), centers[1][i]);
+			network.getLayer(0).getNeuron(1).addOutConnection(network.getLayer(1).getNeuron(i), centers[1][i]);
 		}
 		//weights hidden->output
 		for(int i=0; i<30; i++){
 			network.getLayer(1).getNeuron(i).addOutConnection(network.getLayer(2).getNeuron(0),1);
 		}
 		//Netzausgabe #test
-		network.feedForward();
 		
 		double[][] classoutput1 = new double [2][301*301];
 		

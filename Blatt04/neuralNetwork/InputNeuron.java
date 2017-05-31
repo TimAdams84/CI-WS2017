@@ -19,7 +19,6 @@ public class InputNeuron extends Neuron {
 		super.addOutConnection(to, weight);
 	}
 
-	@Override
 	public void calculateOuput() {
 		output = input;
 	}

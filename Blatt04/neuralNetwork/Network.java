@@ -32,7 +32,7 @@ public class Network {
 	}
 	
 	public void feedForward(){
-		for(int i = 1; i<layers.size(); i++){
+		for(int i = 0; i<layers.size(); i++){
 			for (Neuron neuron : layers.get(i).getNeuronen()) {
 				neuron.calculateOuput();
 			}
