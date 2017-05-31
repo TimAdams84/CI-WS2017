@@ -92,6 +92,21 @@ public class Main {
 		    }
 		}
 		
+		for (int x=0;x<10000;x++){
+			for (int i=0;i<100;i++){
+				network.setInput(new double[]{class1[0][i],class1[1][i]});
+				network.feedForward();
+				network.backpropagate(1);
+				System.out.println(network.getSingleOutput());
+				network.setInput(new double[]{class2[0][i],class2[1][i]});
+				network.feedForward();
+				network.backpropagate(-1);			
+			}
+		}
+		
+		
+		
+		
 		
 		DefaultXYDataset dataset = new DefaultXYDataset();
 		dataset.addSeries("Class 1", class1);

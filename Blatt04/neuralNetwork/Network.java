@@ -42,7 +42,7 @@ public class Network {
 	public void setInput(double[] input){		
 		int counter = 0;
 		for (Neuron neuron : layers.get(0).getNeuronen()) {
-			neuron.output = input[counter];
+			neuron.input = input[counter];
 			counter ++;
 		}
 	}
