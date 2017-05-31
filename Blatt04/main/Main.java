@@ -91,18 +91,58 @@ public class Main {
 		    }
 		}
 		
+		
+		//Training
 		for (int x=0;x<10000;x++){
 			for (int i=0;i<100;i++){
 				network.setInput(new double[]{class1[0][i],class1[1][i]});
 				network.feedForward();
 				network.backpropagate(1);
-				System.out.println(network.getSingleOutput());
 				network.setInput(new double[]{class2[0][i],class2[1][i]});
 				network.feedForward();
-				network.backpropagate(-1);	
-				System.out.println(network.getSingleOutput());
+				network.backpropagate(-1);	;
 			}
 		}
+		
+//		ArrayList<double> classoutput1X1 = new ArrayList<double>();
+//		ArrayList<double> classoutput1X2 = new ArrayList<double>();
+//		ArrayList<double> classoutput2X1 = new ArrayList<double>();
+//		ArrayList<double> classoutput2X2 = new ArrayList<double>();
+//		        
+//		for (int x1=0;x1<301;x1++) {
+//		    double x1Coord = -15+x1*0.1;
+//		    for (int x2=0;x2<301;x2++) {
+//		        double x2Coord = -15+x2*0.1;
+//		        // ins network feeden
+//		        network.reset();
+//		        network.setinput(x1Coord, x2Coord);
+//		        network.run();
+//		        double output = network.getSingleOutput();
+//		        if (output>0) {
+//		            // Class1
+//		               classoutput1X1.add(x1Coord);
+//		               classoutput1X2.add(x2Coord);
+//		           } else {
+//		               // Class2
+//		               classoutput2X1.add(x1Coord);
+//		               classoutput2X2.add(x2Coord);
+//		           }
+//		    }
+//		}
+//		<22:59:20> "BuffaloDan": // JFreeChart Kompatibel machen
+//		// classoutput1X1.size() = classoutput1X2.size()
+//		double[][] c1Out = new double[2][classoutput1X1.size()];
+//		double[][] c2Out = new double[2][classoutput2X1.size()];
+//		c1Out[0] = classoutput1X1.toArray(new double[0]);
+//		c1Out[1] = classoutput1X2.toArray(new double[0]);
+//		c2Out[0] = classoutput2X1.toArray(new double[0]);
+//		c2Out[1] = classoutput2X2.toArray(new double[0]);
+//
+//		dataset.addSeries(...c1Out);
+//		dataset.addSeries(...c2Out);
+
+	        
+
 		
 		
 		
