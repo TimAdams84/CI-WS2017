@@ -16,7 +16,7 @@ public interface ActivationFunction extends Function {
 	 public static final ActivationFunction FERMI = new ActivationFunction() {
 			
 		public double calculate(double input) {
-			return 1/1*Math.e;
+			return 1/1*Math.exp(-input);
 		}
 		
 		public double differentiate(double input) {

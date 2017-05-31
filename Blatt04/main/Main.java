@@ -77,7 +77,7 @@ public class Main {
 		}
 		//weights hidden->output
 		for(int i=0; i<30; i++){
-			network.getLayer(1).getNeuron(i).addOutConnection(network.getLayer(2).getNeuron(0),);
+			network.getLayer(1).getNeuron(i).addOutConnection(network.getLayer(2).getNeuron(0),1);
 		}
 		//Netzausgabe #test
 

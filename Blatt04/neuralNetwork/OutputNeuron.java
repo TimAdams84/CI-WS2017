@@ -6,7 +6,7 @@ public class OutputNeuron extends Neuron {
 	
 	public OutputNeuron(double input, double output,
 			ActivationFunction activationFunction) {
-		super(input, output, activationFunction);
+		super(activationFunction);
 		// TODO Auto-generated constructor stub
 	}
 
