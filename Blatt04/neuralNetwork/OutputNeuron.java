@@ -31,6 +31,7 @@ public class OutputNeuron extends Neuron {
 	public void backpropagate(double expected, double learningRate) {
 		error = 1/2 * Math.pow((expected - output),2);
 		delta = activationFunction.differentiate(input)*(expected - output);
+		refresh(learningRate);
 	}
 	
 	
