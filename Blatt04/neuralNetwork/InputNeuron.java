@@ -21,8 +21,7 @@ public class InputNeuron extends Neuron {
 
 	@Override
 	public void calculateOuput() {
-		// TODO Auto-generated method stub
-		super.calculateOuput();
+		output = input;
 	}
 
 	@Override

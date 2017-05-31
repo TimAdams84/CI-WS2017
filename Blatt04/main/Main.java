@@ -58,8 +58,8 @@ public class Main {
 			network.addLayer(new Layer());
 		}
 		//x1 x2 inputneuronen
-		network.getLayer(0).addNeuron(new Neuron(null));
-		network.getLayer(0).addNeuron(new Neuron(null));
+		network.getLayer(0).addNeuron(new InputNeuron(null));
+		network.getLayer(0).addNeuron(new InputNeuron(null));
 		
 		//hidden Layer
 		for(int i=0; i<30; i++){
@@ -79,7 +79,8 @@ public class Main {
 			network.getLayer(1).getNeuron(i).addOutConnection(network.getLayer(2).getNeuron(0),1);
 		}
 		//Netzausgabe #test
-
+		network.feedForward();
+		
 		double[][] classoutput1 = new double [2][301*301];
 		
 		for (int x1=0;x1<301;x1++) {
