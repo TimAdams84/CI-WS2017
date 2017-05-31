@@ -7,10 +7,14 @@ public class Network {
 	ArrayList<Layer> layers = new ArrayList<Layer>();
 	double learningRate;
 	
-	public Network(double lr){
-		this.learningRate=lr;
+	public double getLearningRate() {
+		return learningRate;
 	}
-	
+
+	public void setLearningRate(double learningRate) {
+		this.learningRate = learningRate;
+	}
+
 	public void addLayer(Layer l){
 		layers.add(l);
 	}

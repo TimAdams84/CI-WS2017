@@ -27,7 +27,9 @@ public class Neuron {
 	}
 	
 	public void addOutConnection(Neuron to, double weight){
-		this.inConnections.add(new Connection(this, to, weight));
+		Connection c = new Connection(this, to, weight);
+		this.outConnections.add(c);
+		to.inConnections.add(c);
 	}
 	
 	public void calculateOuput(){
