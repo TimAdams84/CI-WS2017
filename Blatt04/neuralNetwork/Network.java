@@ -42,7 +42,7 @@ public class Network {
 	public void setInput(double[] input){		
 		int counter = 0;
 		for (Neuron neuron : layers.get(0).getNeuronen()) {
-			neuron.input = input[counter];
+			neuron.output = input[counter];
 			counter ++;
 		}
 	}
@@ -58,9 +58,11 @@ public class Network {
 	
 	public void backpropagate(double expected){
 		for (Neuron neuron :layers.get(layers.size()-1).getNeuronen()){
+			if(neuron instanceof InputNeuron) continue;
 			neuron.backpropagate(expected);
 		}
 	}
+
 	
 	public double getSingleOutput(){
 		return layers.get(layers.size()-1).getNeuronen().get(0).output;

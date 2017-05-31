@@ -67,7 +67,7 @@ public class Main {
 		}
 		
 		//output
-		network.getLayer(2).addNeuron(new Neuron(null));
+		network.getLayer(2).addNeuron(new Neuron(ActivationFunction.LINEAR));
 		
 		//weights input->hidden
 		for(int i=0; i<30; i++){
