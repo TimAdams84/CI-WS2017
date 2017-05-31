@@ -70,6 +70,8 @@ public class Main {
 		
 		DefaultXYDataset dataset = new DefaultXYDataset();
 		dataset.addSeries("Class 1", class1);
+		dataset.addSeries("Class 2", class2);
+		dataset.addSeries("Centers",centers);
 		dataset.addSeries("Class 12", classoutput1);
 		
 		
