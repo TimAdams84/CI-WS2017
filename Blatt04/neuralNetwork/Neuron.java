@@ -9,8 +9,8 @@ public class Neuron {
 	ActivationFunction activationFunction;
 	double delta;
 	
-	ArrayList<Connection> inConnections;
-	ArrayList<Connection> outConnections;
+	ArrayList<Connection> inConnections = new ArrayList<Connection>();
+	ArrayList<Connection> outConnections = new ArrayList<Connection>();;
 	
 	
 	public Neuron(ActivationFunction activationFunction) {
