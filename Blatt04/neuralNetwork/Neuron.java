@@ -13,11 +13,8 @@ public class Neuron {
 	ArrayList<Connection> outConnections;
 	
 	
-	public Neuron(double input, double output,
-			ActivationFunction activationFunction) {
+	public Neuron(ActivationFunction activationFunction) {
 		super();
-		this.input = input;
-		this.output = output;
 		this.activationFunction = activationFunction;
 	}
 	

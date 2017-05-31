@@ -2,8 +2,8 @@ package main;
 import java.util.ArrayList;
 import java.util.List;
 
-import neuralNetwork.Network;
-
+//import neuralNetwork.Network;
+import neuralNetwork.*;
 import org.apache.commons.math3.ml.clustering.CentroidCluster;
 import org.apache.commons.math3.ml.clustering.DoublePoint;
 import org.apache.commons.math3.ml.clustering.KMeansPlusPlusClusterer;
@@ -50,10 +50,35 @@ public class Main {
 		
 		
 		// initialisieren des RBF Netzes
+		
 		Network network = new Network(0.03);
 		
+		//input,hidden,output Layer
 		
+		for(int i=0; i<3; i++){
+			network.addLayer(new Layer());
+		}
+		//x1 x2 inputneuronen
+		network.getLayer(0).addNeuron(new Neuron(null));
+		network.getLayer(0).addNeuron(new Neuron(null));
 		
+		//hidden Layer
+		for(int i=0; i<30; i++){
+			network.getLayer(1).addNeuron(new RBFNeuron(null));
+		}
+		
+		//output
+		network.getLayer(2).addNeuron(new Neuron(null));
+		
+		//weights input->hidden
+		for(int i=0; i<30; i++){
+			network.getLayer(0).getNeuron(0).addOutConnection(network.getLayer(1).getNeuron(i), centers[0][i]);
+			network.getLayer(0).getNeuron(0).addOutConnection(network.getLayer(1).getNeuron(i), centers[1][i]);
+		}
+		//weights hidden->output
+		for(int i=0; i<30; i++){
+			network.getLayer(1).getNeuron(i).addOutConnection(network.getLayer(2).getNeuron(0),);
+		}
 		//Netzausgabe #test
 		
 		double[][] classoutput1 = new double [2][300];

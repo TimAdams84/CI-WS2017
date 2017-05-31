@@ -3,11 +3,11 @@ package neuralNetwork;
 public class RBFNeuron extends Neuron {
 
 	double sigma;
-	
-	public RBFNeuron(double input, double output, ActivationFunction activationFunction) {
-		super(input, output, activationFunction);
-		this.sigma = 1;
-	}
+
+	public RBFNeuron(ActivationFunction activationFunction) {
+		super(activationFunction);
+		// TODO Auto-generated constructor stub
+	}	
 
 	@Override
 	public void addInConnection(Neuron from, double weight) {
@@ -28,6 +28,7 @@ public class RBFNeuron extends Neuron {
 		for (Connection connection : inConnections) {
 			input = Math.pow((connection.from.output-connection.weight),2);
 		}
+		input = Math.sqrt(input);
 		output = Math.pow(Math.E, Math.pow(-input, 2)/4);
 	}
 

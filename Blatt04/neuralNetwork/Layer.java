@@ -13,5 +13,10 @@ public class Layer {
 	public void addNeuron(Neuron n) {
 		neuronen.add(n);
 	}
+	
+	public Neuron getNeuron(int i){
+		Neuron neuron = neuronen.get(i);
+		return neuron;
+	}
 
 }
