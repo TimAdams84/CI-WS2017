@@ -24,6 +24,10 @@ public class RBFNeuron extends Neuron {
 	//sigma initialisiert als 1
 	@Override
 	public void calculateOuput() {
+		input = 0;
+		for (Connection connection : inConnections) {
+			input = Math.pow((connection.from.output-connection.weight),2);
+		}
 		output = Math.pow(Math.E, Math.pow(-input, 2)/4);
 	}
 
