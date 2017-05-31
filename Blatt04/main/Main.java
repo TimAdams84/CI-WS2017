@@ -12,7 +12,6 @@ import org.jfree.chart.ChartFrame;
 import org.jfree.chart.JFreeChart;
 import org.jfree.data.xy.DefaultXYDataset;
 
-import de.buffalodan.plot.PlotFactory;
 
 public class Main {
 
