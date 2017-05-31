@@ -32,6 +32,15 @@ public class Network {
 		}
 	}
 	
+	public void setInput(double[] input){		
+		int counter = 0;
+		for (Neuron neuron : layers.get(0).getNeuronen()) {
+			neuron.input = input[counter];
+			counter ++;
+		}
+	}
+	
+	
 	public double getOutputError(){
 		double sumError = 0;
 		for (Neuron neuron :layers.get(layers.size()-1).getNeuronen()){
