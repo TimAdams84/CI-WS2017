@@ -4,9 +4,9 @@ public class RBFNeuron extends Neuron {
 
 	double sigma;
 	
-	public RBFNeuron(double input, double output, double sigma, ActivationFunction activationFunction) {
+	public RBFNeuron(double input, double output, ActivationFunction activationFunction) {
 		super(input, output, activationFunction);
-		this.sigma = sigma;
+		this.sigma = 1;
 	}
 
 	@Override
@@ -21,10 +21,10 @@ public class RBFNeuron extends Neuron {
 		super.addOutConnection(to, weight);
 	}
 
+	//sigma initialisiert als 1
 	@Override
 	public void calculateOuput() {
-		// TODO Auto-generated method stub
-		super.calculateOuput();
+		output = Math.pow(Math.E, Math.pow(-input, 2)/4);
 	}
 
 	@Override

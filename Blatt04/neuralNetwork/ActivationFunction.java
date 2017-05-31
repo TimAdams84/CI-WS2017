@@ -13,4 +13,8 @@ public interface ActivationFunction extends Function {
 			return 1;
 		}
 	};
+	
+	
+	
+	
 }
