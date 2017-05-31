@@ -40,7 +40,7 @@ public class Neuron {
 	public void backpropagate(double learningRate){
 		double temp= 0;
 		for (Connection connection : outConnections) {
-			temp = connection.weight*connection.to.delta;
+			temp += connection.weight*connection.to.delta;
 		}
 		delta = activationFunction.differentiate(input) * temp;
 		refresh(learningRate);
@@ -48,7 +48,7 @@ public class Neuron {
 	
 	public void refresh(double learningRate){
 		for (Connection connection : inConnections) {
-			connection.weight -= learningRate * input * delta;
+			connection.weight += learningRate * connection.from.output * delta;
 		}
 	}
 	

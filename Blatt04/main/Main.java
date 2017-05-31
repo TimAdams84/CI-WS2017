@@ -67,7 +67,7 @@ public class Main {
 		}
 		
 		//output
-		network.getLayer(2).addNeuron(new Neuron(ActivationFunction.LINEAR));
+		network.getLayer(2).addNeuron(new OutputNeuron(ActivationFunction.LINEAR));
 		
 		//weights input->hidden
 		for(int i=0; i<30; i++){
@@ -99,7 +99,8 @@ public class Main {
 				System.out.println(network.getSingleOutput());
 				network.setInput(new double[]{class2[0][i],class2[1][i]});
 				network.feedForward();
-				network.backpropagate(-1);			
+				network.backpropagate(-1);	
+				System.out.println(network.getSingleOutput());
 			}
 		}
 		

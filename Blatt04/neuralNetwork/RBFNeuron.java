@@ -29,19 +29,6 @@ public class RBFNeuron extends Neuron {
 			input = Math.pow((connection.from.output-connection.weight),2);
 		}
 		input = Math.sqrt(input);
-		output = Math.pow(Math.E, Math.pow(-input, 2)/4);
+		output = Math.pow(Math.E, -Math.pow(input, 2)/4);
 	}
-
-	@Override
-	public void backpropagate(double learningRate) {
-		// TODO Auto-generated method stub
-		super.backpropagate(learningRate);
-	}
-
-	@Override
-	public void refresh(double learningRate) {
-		// TODO Auto-generated method stub
-		super.refresh(learningRate);
-	}
-
 }

@@ -4,10 +4,8 @@ public class OutputNeuron extends Neuron {
 	
 	double error;
 	
-	public OutputNeuron(double input, double output,
-			ActivationFunction activationFunction) {
+	public OutputNeuron(ActivationFunction activationFunction) {
 		super(activationFunction);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -30,7 +28,7 @@ public class OutputNeuron extends Neuron {
 
 	public void backpropagate(double expected, double learningRate) {
 		error = 1/2 * Math.pow((expected - output),2);
-		delta = activationFunction.differentiate(input)*(expected - output);
+		delta = (expected - output);
 		refresh(learningRate);
 	}
 	
