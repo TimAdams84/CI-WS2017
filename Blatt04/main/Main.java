@@ -104,6 +104,34 @@ public class Main {
 			}
 		}
 		
+		// Klassifikation nach Training
+
+		ArrayList<Double> toclass1x1  = new ArrayList<Double>();
+		ArrayList<Double> toclass1x2  = new ArrayList<Double>();
+		ArrayList<Double> toclass2x1  = new ArrayList<Double>();
+		ArrayList<Double> toclass2x2  = new ArrayList<Double>();
+		
+		for (int i = 0; i < 301; i++) {
+			for (int j = 0; j < 301; j++) {
+				double[] input = new double[]{-15+(i+0.15),-15+(i+0.15)};
+				network.setInput(input);
+				if (network.getSingleOutput() > 0){
+					toclass1x1.add(input[0]);
+					toclass1x2.add(input[1]);
+				}
+				else{
+					toclass2x1.add(input[0]);
+					toclass2x2.add(input[1]);
+				}			
+			}			
+		}
+		
+		double[][] class1c1out = new double[2][toclass1x1.size()];
+		double[][] class2c1out = new double[2][toclass2x1.size()];
+		
+		class1c1out[0] = toclass1x1.toArray(new double[0]);
+		
+		
 //		ArrayList<double> classoutput1X1 = new ArrayList<double>();
 //		ArrayList<double> classoutput1X2 = new ArrayList<double>();
 //		ArrayList<double> classoutput2X1 = new ArrayList<double>();
