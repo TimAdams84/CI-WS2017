@@ -16,7 +16,7 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.data.xy.DefaultXYDataset;
 
 
-public class Main {
+public class Main30xRBF {
 
 	
 	public static void main(String[] args) {
