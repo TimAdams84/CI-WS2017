@@ -113,7 +113,7 @@ public class Main {
 		
 		for (int i = 0; i < 301; i++) {
 			for (int j = 0; j < 301; j++) {
-				double[] input = new double[]{-15+(i+0.15),-15+(i+0.15)};
+				double[] input = new double[]{-15+(i*0.15),-15+(i*0.15)};
 				network.setInput(input);
 				if (network.getSingleOutput() > 0){
 					toclass1x1.add(input[0]);
