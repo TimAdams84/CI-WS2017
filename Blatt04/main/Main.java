@@ -79,8 +79,12 @@ public class Main {
 		}
 		//weights hidden->output
 		for(int i=0; i<30; i++){
-			network.getLayer(1).getNeuron(i).addOutConnection(network.getLayer(2).getNeuron(0),new Random(System.currentTimeMillis()).nextDouble()-0.5d);
+			network.getLayer(1).getNeuron(i).addOutConnection(network.getLayer(2).getNeuron(0),1);
 		}
+		//new Random(System.currentTimeMillis()).nextDouble()-0.5d
+		
+		
+		
 		//Netzausgabe #test
 		
 //		double[][] classoutput1 = new double [2][301*301];

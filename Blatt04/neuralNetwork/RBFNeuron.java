@@ -4,8 +4,11 @@ import java.util.Random;
 
 public class RBFNeuron extends Neuron {
 
-	double sigma = new Random(System.currentTimeMillis()).nextDouble()+0.5d;
-
+//	double sigma = new Random(System.currentTimeMillis()).nextDouble()+0.5d;
+	double sigma = 1;
+	
+	
+	
 	public RBFNeuron(ActivationFunction activationFunction) {
 		super(activationFunction);
 		// TODO Auto-generated constructor stub
