@@ -47,7 +47,7 @@ public class Main {
 		}
 			
 		
-		
+		//test
 		// initialisieren des RBF Netzes
 		
 		Network network = new Network(0.03);
