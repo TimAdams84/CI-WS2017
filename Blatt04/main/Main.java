@@ -2,8 +2,11 @@ package main;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.util.Random;
+
 //import neuralNetwork.Network;
 import neuralNetwork.*;
+
 import org.apache.commons.math3.ml.clustering.CentroidCluster;
 import org.apache.commons.math3.ml.clustering.DoublePoint;
 import org.apache.commons.math3.ml.clustering.KMeansPlusPlusClusterer;
@@ -76,7 +79,7 @@ public class Main {
 		}
 		//weights hidden->output
 		for(int i=0; i<30; i++){
-			network.getLayer(1).getNeuron(i).addOutConnection(network.getLayer(2).getNeuron(0),1);
+			network.getLayer(1).getNeuron(i).addOutConnection(network.getLayer(2).getNeuron(0),new Random(System.currentTimeMillis()).nextDouble()-0.5d);
 		}
 		//Netzausgabe #test
 		
