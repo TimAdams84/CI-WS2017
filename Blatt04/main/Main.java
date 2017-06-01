@@ -149,7 +149,7 @@ public class Main {
 		
 
 	 		
-		//plot
+		//plot 30 RBF
 		DefaultXYDataset dataset = new DefaultXYDataset();
 		dataset.addSeries("Class 1", class1);
 		dataset.addSeries("Class 2", class2);
@@ -157,8 +157,7 @@ public class Main {
 		dataset.addSeries("Class 1 Prediction", class1c1out);
 		dataset.addSeries("Class 2 Prediction", class2c1out);
 		
-
-		JFreeChart chart = ChartFactory.createScatterPlot("Plot", "X1", "X2", dataset);
+		JFreeChart chart = ChartFactory.createScatterPlot("30x RBF", "X1", "X2", dataset);
 
 		ChartFrame frame = new ChartFrame("Plotter", chart);
 		frame.setVisible(true);
