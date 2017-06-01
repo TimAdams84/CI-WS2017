@@ -113,8 +113,9 @@ public class Main {
 		
 		for (int i = 0; i < 301; i++) {
 			for (int j = 0; j < 301; j++) {
-				double[] input = new double[]{-15+(i*0.15),-15+(i*0.15)};
+				double[] input = new double[]{-15+(i*0.1),-15+(j*0.1)};
 				network.setInput(input);
+				network.feedForward();
 				if (network.getSingleOutput() > 0){
 					toclass1x1.add(input[0]);
 					toclass1x2.add(input[1]);
@@ -125,26 +126,19 @@ public class Main {
 				}			
 			}			
 		}
-		
+		System.out.println(toclass1x1.size());
+		System.out.println(toclass2x1.size());
 		double[][] class1c1out = new double[2][toclass1x1.size()];
-		double[][] class2c1out = new double[2][toclass2x1.size()];
+		double[][] class2c1out = new double[2][toclass2x1.size()];	
 		
-		int counter = 0;
-		for (double x : toclass1x1) {
-			class1c1out[0][counter] = x; 
-		}	
-		counter = 0;
-		for (double x : toclass1x2) {
-			class1c1out[1][counter] = x; 
-		}		
-		counter = 0;
-		for (double x : toclass2x1) {
-			class2c1out[0][counter] = x; 
-		}		
-		counter = 0;
-		for (double x : toclass2x1) {
-			class2c1out[1][counter] = x; 
-		}		
+		for (int i=0;i<toclass1x1.size();i++) {
+            class1c1out[0][i] = toclass1x1.get(i);
+            class1c1out[1][i] = toclass1x2.get(i);
+        }
+        for (int i=0;i<toclass2x1.size();i++) {
+            class2c1out[0][i] = toclass2x1.get(i);
+            class2c1out[1][i] = toclass2x2.get(i);
+        }
 		
 
 	 		
