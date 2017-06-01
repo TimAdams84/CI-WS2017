@@ -1,8 +1,10 @@
 package neuralNetwork;
 
+import java.util.Random;
+
 public class RBFNeuron extends Neuron {
 
-	double sigma;
+	double sigma = new Random(System.currentTimeMillis()).nextDouble()+0.5d;
 
 	public RBFNeuron(ActivationFunction activationFunction) {
 		super(activationFunction);
@@ -26,9 +28,9 @@ public class RBFNeuron extends Neuron {
 	public void calculateOuput() {
 		input = 0;
 		for (Connection connection : inConnections) {
-			input = Math.pow((connection.from.output-connection.weight),2);
+			input += Math.pow((connection.from.output-connection.weight),2);
 		}
 		input = Math.sqrt(input);
-		output = Math.pow(Math.E, -Math.pow(input, 2)/4);
+		output = Math.pow(Math.E, -Math.pow(input, 2)/(2*sigma*sigma));
 	}
 }

@@ -59,7 +59,8 @@ public class Network {
 				continue;
 			if (neuron instanceof OutputNeuron)
 				((OutputNeuron) neuron).backpropagate(expected, learningRate);
-			neuron.backpropagate(expected);
+			else
+				neuron.backpropagate(expected);
 		}
 	}
 

@@ -4,19 +4,6 @@ public class InputNeuron extends Neuron {
 
 	public InputNeuron(ActivationFunction activationFunction) {
 		super(activationFunction);
-		// TODO Auto-generated constructor stub
-	}
-
-	@Override
-	public void addInConnection(Neuron from, double weight) {
-		// TODO Auto-generated method stub
-		super.addInConnection(from, weight);
-	}
-
-	@Override
-	public void addOutConnection(Neuron to, double weight) {
-		// TODO Auto-generated method stub
-		super.addOutConnection(to, weight);
 	}
 
 	public void calculateOuput() {
@@ -25,14 +12,16 @@ public class InputNeuron extends Neuron {
 
 	@Override
 	public void backpropagate(double learningRate) {
-		// TODO Auto-generated method stub
-		super.backpropagate(learningRate);
+		//super.backpropagate(learningRate);
 	}
 
 	@Override
 	public void refresh(double learningRate) {
-		// TODO Auto-generated method stub
-		super.refresh(learningRate);
+		//super.refresh(learningRate);
 	}
 
+	public void setInput(double input) {
+		this.input = input;
+	}
+	
 }
