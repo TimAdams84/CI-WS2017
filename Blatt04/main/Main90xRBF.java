@@ -54,7 +54,7 @@ public class Main90xRBF {
 				//test
 				// initialisieren des RBF Netzes
 				
-				Network network = new Network(0.03);
+				Network network = new Network(0.01);
 				
 				//input,hidden,output Layer
 				
@@ -101,7 +101,7 @@ public class Main90xRBF {
 				
 				
 				//Training
-				for (int x=0;x<10000;x++){
+				for (int x=0;x<50000;x++){
 					for (int i=0;i<100;i++){
 						network.setInput(new double[]{class1[0][i],class1[1][i]});
 						network.feedForward();
