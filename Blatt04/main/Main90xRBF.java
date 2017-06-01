@@ -82,23 +82,7 @@ public class Main90xRBF {
 				for(int i=0; i<90; i++){
 					network.getLayer(1).getNeuron(i).addOutConnection(network.getLayer(2).getNeuron(0),1);
 				}
-				//new Random(System.currentTimeMillis()).nextDouble()-0.5d
-				
-				
-				
-				//Netzausgabe #test
-				
-//				double[][] classoutput1 = new double [2][301*301];
-//				
-//				for (int x1=0;x1<301;x1++) {
-//				    double x1Coord = -15+x1*0.1;
-//				    for (int x2=0;x2<301;x2++) {
-//				        double x2Coord = -15+x2*0.1;
-//				        classoutput1[0][x1*301+x2] = x1Coord;
-//				        classoutput1[1][x1*301+x2] = x2Coord;
-//				    }
-//				}
-				
+				//new Random(System.currentTimeMillis()).nextDouble()-0.5d								
 				
 				//Training
 				for (int x=0;x<50000;x++){
