@@ -80,16 +80,16 @@ public class Main {
 		}
 		//Netzausgabe #test
 		
-		double[][] classoutput1 = new double [2][301*301];
-		
-		for (int x1=0;x1<301;x1++) {
-		    double x1Coord = -15+x1*0.1;
-		    for (int x2=0;x2<301;x2++) {
-		        double x2Coord = -15+x2*0.1;
-		        classoutput1[0][x1*301+x2] = x1Coord;
-		        classoutput1[1][x1*301+x2] = x2Coord;
-		    }
-		}
+//		double[][] classoutput1 = new double [2][301*301];
+//		
+//		for (int x1=0;x1<301;x1++) {
+//		    double x1Coord = -15+x1*0.1;
+//		    for (int x2=0;x2<301;x2++) {
+//		        double x2Coord = -15+x2*0.1;
+//		        classoutput1[0][x1*301+x2] = x1Coord;
+//		        classoutput1[1][x1*301+x2] = x2Coord;
+//		    }
+//		}
 		
 		
 		//Training
@@ -129,67 +129,33 @@ public class Main {
 		double[][] class1c1out = new double[2][toclass1x1.size()];
 		double[][] class2c1out = new double[2][toclass2x1.size()];
 		
-		class1c1out[0] = toclass1x1.toArray(new double[0]);
+		int counter = 0;
+		for (double x : toclass1x1) {
+			class1c1out[0][counter] = x; 
+		}	
+		counter = 0;
+		for (double x : toclass1x2) {
+			class1c1out[1][counter] = x; 
+		}		
+		counter = 0;
+		for (double x : toclass2x1) {
+			class2c1out[0][counter] = x; 
+		}		
+		counter = 0;
+		for (double x : toclass2x1) {
+			class2c1out[1][counter] = x; 
+		}		
 		
-		
-//		ArrayList<double> classoutput1X1 = new ArrayList<double>();
-//		ArrayList<double> classoutput1X2 = new ArrayList<double>();
-//		ArrayList<double> classoutput2X1 = new ArrayList<double>();
-//		ArrayList<double> classoutput2X2 = new ArrayList<double>();
-//		        
-//		for (int x1=0;x1<301;x1++) {
-//		    double x1Coord = -15+x1*0.1;
-//		    for (int x2=0;x2<301;x2++) {
-//		        double x2Coord = -15+x2*0.1;
-//		        // ins network feeden
-//		        network.reset();
-//		        network.setinput(x1Coord, x2Coord);
-//		        network.run();
-//		        double output = network.getSingleOutput();
-//		        if (output>0) {
-//		            // Class1
-//		               classoutput1X1.add(x1Coord);
-//		               classoutput1X2.add(x2Coord);
-//		           } else {
-//		               // Class2
-//		               classoutput2X1.add(x1Coord);
-//		               classoutput2X2.add(x2Coord);
-//		           }
-//		    }
-//		}
-//		<22:59:20> "BuffaloDan": // JFreeChart Kompatibel machen
-//		// classoutput1X1.size() = classoutput1X2.size()
-//		double[][] c1Out = new double[2][classoutput1X1.size()];
-//		double[][] c2Out = new double[2][classoutput2X1.size()];
-//		c1Out[0] = classoutput1X1.toArray(new double[0]);
-//		c1Out[1] = classoutput1X2.toArray(new double[0]);
-//		c2Out[0] = classoutput2X1.toArray(new double[0]);
-//		c2Out[1] = classoutput2X2.toArray(new double[0]);
-//
-//		dataset.addSeries(...c1Out);
-//		dataset.addSeries(...c2Out);
 
-	        
-
-		
-		
-		
-		
-		
+	 		
+		//plot
 		DefaultXYDataset dataset = new DefaultXYDataset();
 		dataset.addSeries("Class 1", class1);
 		dataset.addSeries("Class 2", class2);
 		dataset.addSeries("Centers",centers);
-		dataset.addSeries("Class 12", classoutput1);
+		dataset.addSeries("Class 1 Prediction", class1c1out);
+		dataset.addSeries("Class 2 Prediction", class2c1out);
 		
-		
-		//plottet Datebpunkte und Zentren
-		
-//		DefaultXYDataset dataset = new DefaultXYDataset();
-//		dataset.addSeries("Class 1", class1);
-//		dataset.addSeries("Class 2", class2);
-//		dataset.addSeries("Centers",centers);
-
 
 		JFreeChart chart = ChartFactory.createScatterPlot("Plot", "X1", "X2", dataset);
 
