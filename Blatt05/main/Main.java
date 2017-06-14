@@ -4,6 +4,8 @@ import java.util.Random;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartFrame;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.XYPlot;
+import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
 import org.jfree.data.xy.DefaultXYDataset;
 
 
@@ -38,6 +40,11 @@ public class Main {
 		JFreeChart chart = ChartFactory.createScatterPlot("Übung 5", "x", "y", dataset);
 
 		ChartFrame frame = new ChartFrame("Plotter", chart);
+		XYPlot plot = (XYPlot) chart.getPlot();
+        XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
+        renderer.setSeriesLinesVisible(0, true);
+        plot.setRenderer(renderer);
+        
 		frame.setVisible(true);
 		frame.setSize(800, 600);	
 	}
