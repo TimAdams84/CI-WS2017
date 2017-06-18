@@ -33,7 +33,28 @@ public class Main {
 			int rnd = new Random().nextInt(data[0].length);
 			units[0][i] = data[0][rnd];
 			units[1][i] = data[1][rnd];
+			System.out.println(units[0][i]);
+			
 		}
+		
+		//ordne Soms nach x-Werten aufsteigend, momentan Selection Sort
+		//sollte evtl als Merge Sort implementiert werden je nach Laufzeit
+		double tempx;
+		double tempy;
+		for(int i=0;i<99;i++){
+			for(int j=i+1; j<100;j++){
+				if (units[0][i]>units[0][j]){
+					tempx = units[0][i];
+					tempy = units[1][i];
+					units[0][i] = units[0][j];
+					units[1][i] = units[0][j];
+					units[0][j] = tempx;
+					units[1][j] = tempy;
+				}
+			}
+		}
+		//Visualisierung
+		
 		DefaultXYDataset dataset = new DefaultXYDataset();
 		dataset.addSeries("SOM-Units", units);
 		dataset.addSeries("2D-Datenpunkte", data);
@@ -42,12 +63,11 @@ public class Main {
 
 		ChartFrame frame = new ChartFrame("Plotter", chart);
 		
-		// deaktiviert da auch Verbindungen zwischen Datenpunkten gerendert werden; sieht chaotisch aus ?
-		
-//		XYPlot plot = (XYPlot) chart.getPlot();
-//        XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
-//        renderer.setSeriesLinesVisible(0, true);
-//        plot.setRenderer(renderer);
+		XYPlot plot = (XYPlot) chart.getPlot();
+        XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
+        renderer.setSeriesLinesVisible(0, true);
+        renderer.setSeriesLinesVisible(1, false);
+        plot.setRenderer(renderer);
         
 		frame.setVisible(true);
 		frame.setSize(800, 600);	
