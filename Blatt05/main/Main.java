@@ -16,10 +16,11 @@ public class Main {
 		double[][] data = new double[2][1001];
 		double u = 0;
 		
-		//Rauschen fehlt
+		//Rauschen mit Varianz = 1
 		for(int i=0; i<1001;i++){
-			data[0][i]= 2*(3+Math.sqrt(u)*Math.sin(u));
-			data[1][i]= 3*(3+Math.sqrt(u)*Math.cos(u));
+			java.util.Random r = new java.util.Random();
+			data[0][i]= 2*(3+Math.sqrt(u)*Math.sin(u))+ r.nextGaussian() * Math.sqrt(1);
+			data[1][i]= 3*(3+Math.sqrt(u)*Math.cos(u))+ r.nextGaussian() * Math.sqrt(1);
 			u += 0.02;
 		}
 		
@@ -40,10 +41,13 @@ public class Main {
 		JFreeChart chart = ChartFactory.createScatterPlot("Übung 5", "x", "y", dataset);
 
 		ChartFrame frame = new ChartFrame("Plotter", chart);
-		XYPlot plot = (XYPlot) chart.getPlot();
-        XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
-        renderer.setSeriesLinesVisible(0, true);
-        plot.setRenderer(renderer);
+		
+		// deaktiviert da auch Verbindungen zwischen Datenpunkten gerendert werden; sieht chaotisch aus ?
+		
+//		XYPlot plot = (XYPlot) chart.getPlot();
+//        XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
+//        renderer.setSeriesLinesVisible(0, true);
+//        plot.setRenderer(renderer);
         
 		frame.setVisible(true);
 		frame.setSize(800, 600);	
