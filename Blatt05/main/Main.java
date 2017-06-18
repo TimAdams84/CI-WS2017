@@ -33,7 +33,8 @@ public class Main {
 			int rnd = new Random().nextInt(data[0].length);
 			units[0][i] = data[0][rnd];
 			units[1][i] = data[1][rnd];
-			System.out.println(units[0][i]);
+			System.out.print("x: "+units[0][i]);
+			System.out.println("y: "+units[1][i]);
 			
 		}
 		
@@ -47,7 +48,7 @@ public class Main {
 					tempx = units[0][i];
 					tempy = units[1][i];
 					units[0][i] = units[0][j];
-					units[1][i] = units[0][j];
+					units[1][i] = units[1][j];
 					units[0][j] = tempx;
 					units[1][j] = tempy;
 				}
