@@ -11,6 +11,12 @@ import org.jfree.data.xy.DefaultXYDataset;
 
 public class Main {
 	
+	//euklidische Distanz
+	
+	public static double getDistance(double x1, double y1, double x2, double y2){
+		return Math.sqrt(Math.pow(x1-x2, 2)+Math.sqrt(Math.pow(y1-y2, 2)));
+	}
+	
 	public static void main(String[] args){
 	
 		double[][] data = new double[2][1001];
@@ -33,8 +39,6 @@ public class Main {
 			int rnd = new Random().nextInt(data[0].length);
 			units[0][i] = data[0][rnd];
 			units[1][i] = data[1][rnd];
-			System.out.print("x: "+units[0][i]);
-			System.out.println("y: "+units[1][i]);
 			
 		}
 		
@@ -72,6 +76,8 @@ public class Main {
         
 		frame.setVisible(true);
 		frame.setSize(800, 600);	
+		
+		System.out.println("Distanz Test: "+getDistance(1,2,1,3));
 	}
 
 	
