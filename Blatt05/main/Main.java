@@ -58,6 +58,28 @@ public class Main {
 				}
 			}
 		}
+		
+		//Training
+		System.out.println(data[0].length);
+		for (int i = 0; i < data[0].length; i++) {
+			double datax = data[0][i];
+			double datay = data[1][i];
+			
+			//finde Gewinner-Unit
+			int winnerIndex = 0;
+			double minDistance =  Double.POSITIVE_INFINITY;
+			for (int j = 0; j < units[0].length; j++) {
+				double currentDistance = getDistance(datax, datay, units[0][j],units[1][j]);
+				if (currentDistance< minDistance) {
+					winnerIndex = j;
+					minDistance = currentDistance;
+				}				
+			}
+			System.out.println("Datenpunkt "+i+" hat Gewinner-Unit mit Index "+winnerIndex);		
+		}
+		
+		
+		
 		//Visualisierung
 		
 		DefaultXYDataset dataset = new DefaultXYDataset();
@@ -76,8 +98,7 @@ public class Main {
         
 		frame.setVisible(true);
 		frame.setSize(800, 600);	
-		
-		System.out.println("Distanz Test: "+getDistance(1,2,1,3));
+
 	}
 
 	
