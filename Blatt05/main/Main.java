@@ -45,8 +45,8 @@ public class Main {
 				for(int k=0;k<units[0].length;k++){
 					double temp = learningrate*Math.exp(-1*Math.pow(Math.abs(winner-k),2)/2*Math.pow(sigma(i, iterations),2));
 					System.out.println("SOM-Unit "+k+" vorher: "+"("+units[0][k]+","+units[1][k]+")");
-					units[0][k]+= temp*(tempx-units[0][k]);
-					units[1][k]+= temp*(tempy-units[1][k]);
+					units[0][k]+= temp*(data[0][j]-units[0][k]);
+					units[1][k]+= temp*(data[0][j]-units[1][k]);
 					System.out.println("SOM-Unit "+k+" nachher: "+"("+units[0][k]+","+units[1][k]+")");
 				}
 			}
