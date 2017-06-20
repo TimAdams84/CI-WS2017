@@ -96,7 +96,7 @@ public class Main {
 //		}
 		
 		//Training
-		units = training(data,units,3,0.5);			
+		units = training(data,units,18,0.5);			
 		
 		
 		//Visualisierung
