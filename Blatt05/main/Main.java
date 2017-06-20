@@ -43,7 +43,7 @@ public class Main {
 			double tempx = units[0][winner];
 			double tempy = units[1][winner];
 				for(int k=0;k<units[0].length;k++){
-					double temp = learningrate*Math.exp(-1*Math.pow(getDistance(tempx,tempy,units[0][k],units[1][k]),2)/2*sigma(i, iterations));
+					double temp = learningrate*Math.exp(-1*Math.pow(getDistance(tempx,tempy,units[0][k],units[1][k]),2)/2*Math.pow(sigma(i, iterations),2));
 					units[0][k]+= temp*(tempx-units[0][k]);
 					units[1][k]+= temp*(tempx-units[1][k]);
 				}
