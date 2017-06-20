@@ -98,16 +98,14 @@ public class Main {
 //		}
 		
 		//Training
-<<<<<<< HEAD
 		units = training(data,units,3,0.01);			
 		units = training(data,units,3,0.1);			
-=======
+
 //		units = training(data,units,3,0.01);			
 		double[][] data2 = {{1,1,1,1,2,2,7,8,8},{1,2,5,6,1,5,1,1,2}};
         double[][] units2 = {{2,5,8},{2,4,6}};
         units2 = training(data2,units2,3,0.01);
 		
->>>>>>> 3ea53055e19adf6a89e09913db74aec6c37f8c65
 		
 		
 		//Visualisierung
