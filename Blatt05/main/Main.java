@@ -39,17 +39,18 @@ public class Main {
 	public static double[][] training(double[][] data,double[][] units,int iterations, double learningrate){
 		for(int i=0;i<iterations;i++){
 			for(int j=0; j<data[0].length;j++){
-			System.out.println("Datenpunkt "+j+":");
+//			System.out.println("Datenpunkt "+j+":");
 			int winner=getWinner(data[0][j],data[1][j],units);
 			double tempx = units[0][winner];
 			double tempy = units[1][winner];
-			System.out.println("Gewinner-Unit: "+winner);
+//			System.out.println("Gewinner-Unit: "+winner);
 				for(int k=0;k<units[0].length;k++){
 					double temp = learningrate*Math.exp(-1*Math.pow(Math.abs(winner-k),2)/2*Math.pow(sigma(i, iterations),2));
-					System.out.println("SOM-Unit "+k+" vorher: "+"("+units[0][k]+","+units[1][k]+")");
+//					System.out.println("temp: "+temp);
+//					System.out.println("SOM-Unit "+k+" vorher: "+"("+units[0][k]+","+units[1][k]+")");
 					units[0][k]+= temp*(data[0][j]-units[0][k]);
 					units[1][k]+= temp*(data[1][j]-units[1][k]);
-					System.out.println("SOM-Unit "+k+" nachher: "+"("+units[0][k]+","+units[1][k]+")");
+//					System.out.println("SOM-Unit "+k+" nachher: "+"("+units[0][k]+","+units[1][k]+")");
 				}
 			}
 		}
@@ -100,10 +101,10 @@ public class Main {
 //		}
 		
 		//Training	
-//		units = training(data,units,3,0.01);			
-		double[][] data2 = {{1,1,1,1,2,2,7,8,8},{1,2,5,6,1,5,1,1,2}};
-        double[][] units2 = {{2,5,8},{2,4,6}};
-        units2 = training(data2,units2,100,0.01);
+		units = training(data,units,12,0.01);			
+//		double[][] data2 = {{1,1,1,1,2,2,7,8,8},{1,2,5,6,1,5,1,1,2}};
+//        double[][] units2 = {{2,5,8},{2,4,6}};
+//        units2 = training(data2,units2,12,0.1);
 		
 		
 		
@@ -127,14 +128,13 @@ public class Main {
 			winners[1][i] = units[1][getWinner(data[0][(i+1)*100],data[1][(i+1)*100],units)];
 		}
 		
-//		dataset.addSeries("Winner-Units",winners);
-//		dataset.addSeries("SOM-Units", units);
-//		dataset.addSeries("Daten 100,..,1000", stepdata);
-//		dataset.addSeries("2D-Datenpunkte", data);
+		dataset.addSeries("Winner-Units",winners);
+		dataset.addSeries("SOM-Units", units);
+		dataset.addSeries("Daten 100,..,1000", stepdata);
+		dataset.addSeries("2D-Datenpunkte", data);
 
-		dataset.addSeries("SOM", units2);
-		dataset.addSeries("DATA", data2);
-		
+//		dataset.addSeries("SOM", units2);
+//		dataset.addSeries("DATA", data2);
 		
 		
 		JFreeChart chart = ChartFactory.createScatterPlot("Übung 5", "x", "y", dataset);
@@ -149,7 +149,7 @@ public class Main {
         renderer.setSeriesPaint(2, Color.GREEN);
 		renderer.setSeriesPaint(3, Color.BLUE);
         renderer.setSeriesLinesVisible(0, false);
-        renderer.setSeriesLinesVisible(1, false);
+        renderer.setSeriesLinesVisible(1, true);
         renderer.setSeriesLinesVisible(2, false);
         renderer.setSeriesLinesVisible(3, false);
         plot.setRenderer(renderer);
