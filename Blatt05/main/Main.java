@@ -14,7 +14,7 @@ public class Main {
 	
 	//euklidische Distanz	
 	public static double getDistance(double x1, double y1, double x2, double y2){
-		return Math.sqrt(Math.pow(x1-x2, 2)+Math.sqrt(Math.pow(y1-y2, 2)));
+		return Math.sqrt(Math.pow(x1-x2, 2)+(Math.pow(y1-y2, 2)));
 	}
 	
 	public static int getWinner(double datax, double datay , double[][] units){
@@ -78,7 +78,7 @@ public class Main {
 		
 		
 		//Training	
-		units = training(data,units,100,1);				
+		units = training(data,units,100,0.001);				
 		
 		
 		
