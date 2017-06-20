@@ -31,7 +31,7 @@ public class Main {
 	}
 	
 	public static double sigma(int currentIteration, int finalIteration){
-		double start = 0.5;
+		double start = 10;
 		double end = 0.1;
 		return start*Math.pow((end/start),(currentIteration/finalIteration));
 	}
@@ -39,7 +39,7 @@ public class Main {
 	public static double[][] training(double[][] data,double[][] units,int iterations, double learningrate){
 		for(int i=0;i<iterations;i++){
 			for(int j=0; j<data[0].length;j++){
-			int winner=getWinner(data[0][i],data[1][0],units);
+			int winner=getWinner(data[0][j],data[1][j],units);
 			double tempx = units[0][winner];
 			double tempy = units[1][winner];
 				for(int k=0;k<units[0].length;k++){
