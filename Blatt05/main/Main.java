@@ -99,7 +99,7 @@ public class Main {
 		
 		dataset.addSeries("Winner-Units",winners);
 		dataset.addSeries("SOM-Units", units);
-		dataset.addSeries("Datan 100,..,1000", stepdata);
+		dataset.addSeries("Daten 100,..,1000", stepdata);
 		dataset.addSeries("2D-Datenpunkte", data);
 
 
@@ -110,9 +110,10 @@ public class Main {
 		
 		XYPlot plot = (XYPlot) chart.getPlot();
         XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
+
         renderer.setSeriesPaint(0, Color.YELLOW);
-        renderer.setSeriesPaint(1, Color.BLACK);
-        renderer.setSeriesPaint(2, Color.RED);
+        renderer.setSeriesPaint(1, Color.RED);
+        renderer.setSeriesPaint(2, Color.GREEN);
 		renderer.setSeriesPaint(3, Color.BLUE);
         renderer.setSeriesLinesVisible(0, false);
         renderer.setSeriesLinesVisible(1, true);
