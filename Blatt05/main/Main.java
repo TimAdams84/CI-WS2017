@@ -98,7 +98,11 @@ public class Main {
 //		}
 		
 		//Training
-		units = training(data,units,3,0.01);			
+//		units = training(data,units,3,0.01);			
+		double[][] data2 = {{1,1,1,1,2,2,7,8,8},{1,2,5,6,1,5,1,1,2}};
+        double[][] units2 = {{2,5,8},{2,4,6}};
+        units2 = training(data2,units2,3,0.01);
+		
 		
 		
 		//Visualisierung
@@ -121,12 +125,15 @@ public class Main {
 			winners[1][i] = units[1][getWinner(data[0][(i+1)*100],data[1][(i+1)*100],units)];
 		}
 		
-		dataset.addSeries("Winner-Units",winners);
-		dataset.addSeries("SOM-Units", units);
-		dataset.addSeries("Daten 100,..,1000", stepdata);
-		dataset.addSeries("2D-Datenpunkte", data);
+//		dataset.addSeries("Winner-Units",winners);
+//		dataset.addSeries("SOM-Units", units);
+//		dataset.addSeries("Daten 100,..,1000", stepdata);
+//		dataset.addSeries("2D-Datenpunkte", data);
 
-
+		dataset.addSeries("SOM", units2);
+		dataset.addSeries("DATA", data2);
+		
+		
 		
 		JFreeChart chart = ChartFactory.createScatterPlot("Übung 5", "x", "y", dataset);
 
@@ -140,7 +147,7 @@ public class Main {
         renderer.setSeriesPaint(2, Color.GREEN);
 		renderer.setSeriesPaint(3, Color.BLUE);
         renderer.setSeriesLinesVisible(0, false);
-        renderer.setSeriesLinesVisible(1, true);
+        renderer.setSeriesLinesVisible(1, false);
         renderer.setSeriesLinesVisible(2, false);
         renderer.setSeriesLinesVisible(3, false);
         plot.setRenderer(renderer);
