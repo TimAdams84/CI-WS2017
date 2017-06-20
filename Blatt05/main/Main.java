@@ -11,8 +11,7 @@ import org.jfree.data.xy.DefaultXYDataset;
 
 public class Main {
 	
-	//euklidische Distanz
-	
+	//euklidische Distanz	
 	public static double getDistance(double x1, double y1, double x2, double y2){
 		return Math.sqrt(Math.pow(x1-x2, 2)+Math.sqrt(Math.pow(y1-y2, 2)));
 	}
@@ -41,8 +40,8 @@ public class Main {
 		//Rauschen mit Varianz = 1
 		for(int i=0; i<1001;i++){
 			java.util.Random r = new java.util.Random();
-			data[0][i]= 2*(3+Math.sqrt(u)*Math.sin(u))+ r.nextGaussian() * Math.sqrt(1);
-			data[1][i]= 3*(3+Math.sqrt(u)*Math.cos(u))+ r.nextGaussian() * Math.sqrt(1);
+			data[0][i]= 2*(3+Math.sqrt(u)*Math.sin(u))+ r.nextGaussian() * Math.sqrt(0.1*u);
+			data[1][i]= 3*(3+Math.sqrt(u)*Math.cos(u))+ r.nextGaussian() * Math.sqrt(0.15*u);
 			u += 0.02;
 		}
 		
