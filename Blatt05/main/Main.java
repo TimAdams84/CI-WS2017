@@ -25,10 +25,32 @@ public class Main {
 				winnerIndex = i;
 				minDistance = currentDistance;
 			}	
-			System.out.println("Datenpunkt "+i+" hat Gewinner-Unit mit Index "+winnerIndex);
 		}
 		return winnerIndex;
 	}
+	
+	public static double sigma(int currentIteration, int finalIteration){
+		double start = 0.5;
+		double end = 0.1;
+		return start*Math.pow((end/start),(currentIteration/finalIteration));
+	}
+			
+	public static double[][] training(double[][] data,double[][] units,int iterations, double learningrate){
+		for(int i=0;i<iterations;i++){
+			for(int j=0; j<data[0].length;j++){
+			int winner=getWinner(data[0][i],data[1][0],units);
+			double tempx = units[0][winner];
+			double tempy = units[1][winner];
+				for(int k=0;k<units[0].length;k++){
+					double temp = learningrate*Math.exp(-1*Math.pow(getDistance(tempx,tempy,units[0][k],units[1][k]),2)/2*sigma(i, iterations));
+					units[0][k]+= temp*(tempx-units[0][k]);
+					units[1][k]+= temp*(tempx-units[1][k]);
+				}
+			}
+		}
+		return units;
+	}
+	
 	
 	public static void main(String[] args){
 	
@@ -73,7 +95,7 @@ public class Main {
 //		}
 		
 		//Training
-					
+		units = training(data,units,3,0.5);			
 		
 		
 		//Visualisierung
