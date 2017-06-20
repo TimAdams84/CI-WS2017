@@ -31,7 +31,7 @@ public class Main {
 	}
 	
 	public static double sigma(int currentIteration, int finalIteration){
-		double start = 0.9;
+		double start = 0.5;
 		double end = 0.1;
 		return start*Math.pow((end/start),((double)currentIteration/finalIteration));
 	}
@@ -39,15 +39,17 @@ public class Main {
 	public static double[][] training(double[][] data,double[][] units,int iterations, double learningrate){
 		for(int i=0;i<iterations;i++){
 			for(int j=0; j<data[0].length;j++){
+			System.out.println("Datenpunkt "+j+":");
 			int winner=getWinner(data[0][j],data[1][j],units);
 			double tempx = units[0][winner];
 			double tempy = units[1][winner];
+			System.out.println("Gewinner-Unit: "+winner);
 				for(int k=0;k<units[0].length;k++){
 					double temp = learningrate*Math.exp(-1*Math.pow(Math.abs(winner-k),2)/2*Math.pow(sigma(i, iterations),2));
-//					System.out.println("SOM-Unit "+k+" vorher: "+"("+units[0][k]+","+units[1][k]+")");
+					System.out.println("SOM-Unit "+k+" vorher: "+"("+units[0][k]+","+units[1][k]+")");
 					units[0][k]+= temp*(data[0][j]-units[0][k]);
 					units[1][k]+= temp*(data[1][j]-units[1][k]);
-//					System.out.println("SOM-Unit "+k+" nachher: "+"("+units[0][k]+","+units[1][k]+")");
+					System.out.println("SOM-Unit "+k+" nachher: "+"("+units[0][k]+","+units[1][k]+")");
 				}
 			}
 		}
@@ -101,7 +103,7 @@ public class Main {
 //		units = training(data,units,3,0.01);			
 		double[][] data2 = {{1,1,1,1,2,2,7,8,8},{1,2,5,6,1,5,1,1,2}};
         double[][] units2 = {{2,5,8},{2,4,6}};
-        units2 = training(data2,units2,10,0.01);
+        units2 = training(data2,units2,100,0.01);
 		
 		
 		
