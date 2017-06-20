@@ -39,18 +39,13 @@ public class Main {
 	public static double[][] training(double[][] data,double[][] units,int iterations, double learningrate){
 		for(int i=0;i<iterations;i++){
 			for(int j=0; j<data[0].length;j++){
-//			System.out.println("Datenpunkt "+j+":");
 			int winner=getWinner(data[0][j],data[1][j],units);
 			double tempx = units[0][winner];
 			double tempy = units[1][winner];
-//			System.out.println("Gewinner-Unit: "+winner);
 				for(int k=0;k<units[0].length;k++){
 					double temp = learningrate*Math.exp(-1*Math.pow(Math.abs(winner-k),2)/2*Math.pow(sigma(i, iterations),2));
-//					System.out.println("temp: "+temp);
-//					System.out.println("SOM-Unit "+k+" vorher: "+"("+units[0][k]+","+units[1][k]+")");
 					units[0][k]+= temp*(data[0][j]-units[0][k]);
 					units[1][k]+= temp*(data[1][j]-units[1][k]);
-//					System.out.println("SOM-Unit "+k+" nachher: "+"("+units[0][k]+","+units[1][k]+")");
 				}
 			}
 		}
@@ -63,7 +58,7 @@ public class Main {
 		double[][] data = new double[2][1001];
 		double u = 0;
 		
-		//Rauschen mit Varianz = 1
+		//Initialisierung Daten mit Rauschen 
 		for(int i=0; i<1001;i++){
 			java.util.Random r = new java.util.Random();
 			data[0][i]= 2*(3+Math.sqrt(u)*Math.sin(u))+ r.nextGaussian() * Math.sqrt(0.1*u);
@@ -71,40 +66,19 @@ public class Main {
 			u += 0.02;
 		}
 		
-		//5.2 Ansatz mit Arrays
-		//Visualisierung von Verbindungen zwischen den SOM-Units fehlt
 		
+		//Initialisieren Units
 		double [][] units = new double [2][100];
 		
 		for(int i=0; i<100;i++){
 			int rnd = new Random().nextInt(data[0].length);
 			units[0][i] = data[0][rnd];
-			units[1][i] = data[1][rnd];
-			
+			units[1][i] = data[1][rnd];		
 		}
 		
-		//ordne Soms nach x-Werten aufsteigend, momentan Selection Sort
-		//sollte evtl als Merge Sort implementiert werden je nach Laufzeit
-//		double tempx;
-//		double tempy;
-//		for(int i=0;i<99;i++){
-//			for(int j=i+1; j<100;j++){
-//				if (units[0][i]>units[0][j]){
-//					tempx = units[0][i];
-//					tempy = units[1][i];
-//					units[0][i] = units[0][j];
-//					units[1][i] = units[1][j];
-//					units[0][j] = tempx;
-//					units[1][j] = tempy;
-//				}
-//			}
-//		}
 		
 		//Training	
-		units = training(data,units,12,0.01);			
-//		double[][] data2 = {{1,1,1,1,2,2,7,8,8},{1,2,5,6,1,5,1,1,2}};
-//        double[][] units2 = {{2,5,8},{2,4,6}};
-//        units2 = training(data2,units2,12,0.1);
+		units = training(data,units,100,0.02);				
 		
 		
 		
@@ -133,10 +107,6 @@ public class Main {
 		dataset.addSeries("Daten 100,..,1000", stepdata);
 		dataset.addSeries("2D-Datenpunkte", data);
 
-//		dataset.addSeries("SOM", units2);
-//		dataset.addSeries("DATA", data2);
-		
-		
 		JFreeChart chart = ChartFactory.createScatterPlot("Übung 5", "x", "y", dataset);
 
 		ChartFrame frame = new ChartFrame("Plotter", chart);
