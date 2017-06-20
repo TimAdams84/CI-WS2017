@@ -60,23 +60,37 @@ public class Main {
 		}
 		
 		//Training
-		System.out.println(data[0].length);
-		for (int i = 0; i < data[0].length; i++) {
-			double datax = data[0][i];
-			double datay = data[1][i];
-			
-			//finde Gewinner-Unit
-			int winnerIndex = 0;
-			double minDistance =  Double.POSITIVE_INFINITY;
-			for (int j = 0; j < units[0].length; j++) {
-				double currentDistance = getDistance(datax, datay, units[0][j],units[1][j]);
-				if (currentDistance< minDistance) {
-					winnerIndex = j;
-					minDistance = currentDistance;
-				}				
+		int generations = 1;
+		double learnFactor = 0.01;
+		
+		for (int x = 0; x < generations; x++) {
+		
+			for (int i = 0; i < data[0].length; i++) {
+				double datax = data[0][i];
+				double datay = data[1][i];
+				
+				//finde Gewinner-Unit
+				int winnerIndex = 0;
+				double minDistance =  Double.POSITIVE_INFINITY;
+				for (int j = 0; j < units[0].length; j++) {
+					double currentDistance = getDistance(datax, datay, units[0][j],units[1][j]);
+					if (currentDistance< minDistance) {
+						winnerIndex = j;
+						minDistance = currentDistance;
+					}	
+					//wenn Unit überhalb Punkt liegt muss Unit runtergesetzt werden
+					if(datay > units[1][winnerIndex]){
+						minDistance = minDistance*-1;
+					}
+					System.out.println("minimale DIstanz: "+minDistance);
+					System.out.println("Datenpunkt "+i+" hat Gewinner-Unit mit Index "+winnerIndex);
+					units[1][j] = units[1][j] +minDistance*learnFactor;
+				}
+
 			}
-			System.out.println("Datenpunkt "+i+" hat Gewinner-Unit mit Index "+winnerIndex);		
 		}
+		
+		
 		
 		
 		
