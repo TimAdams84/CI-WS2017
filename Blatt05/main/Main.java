@@ -31,9 +31,9 @@ public class Main {
 	}
 	
 	public static double sigma(int currentIteration, int finalIteration){
-		double start = 10;
+		double start = 0.9;
 		double end = 0.1;
-		return start*Math.pow((end/start),(currentIteration/finalIteration));
+		return start*Math.pow((end/start),((double)currentIteration/finalIteration));
 	}
 			
 	public static double[][] training(double[][] data,double[][] units,int iterations, double learningrate){
@@ -42,10 +42,12 @@ public class Main {
 			int winner=getWinner(data[0][j],data[1][j],units);
 			double tempx = units[0][winner];
 			double tempy = units[1][winner];
-				for(int k=0;k<units[0].length;k++){
-					double temp = learningrate*Math.exp(-1*Math.pow(getDistance(tempx,tempy,units[0][k],units[1][k]),2)/2*Math.pow(sigma(i, iterations),2));
+				for(int k=0;k<3;k++){
+					double temp = learningrate*Math.exp(-1*Math.pow(Math.abs(winner-k),2)/2*Math.pow(sigma(i, iterations),2));
+					System.out.println("vorher: "+units[0][k]);
 					units[0][k]+= temp*(tempx-units[0][k]);
-					units[1][k]+= temp*(tempx-units[1][k]);
+					units[1][k]+= temp*(tempy-units[1][k]);
+					System.out.println("nachher: "+units[0][k]);
 				}
 			}
 		}
@@ -96,7 +98,7 @@ public class Main {
 //		}
 		
 		//Training
-		units = training(data,units,3,0.5);			
+		units = training(data,units,3,0.01);			
 		
 		
 		//Visualisierung
