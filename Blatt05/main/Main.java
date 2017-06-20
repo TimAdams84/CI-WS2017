@@ -16,12 +16,10 @@ public class Main {
 		return Math.sqrt(Math.pow(x1-x2, 2)+Math.sqrt(Math.pow(y1-y2, 2)));
 	}
 	
-	public static int getWinner(double[][] data, double[][] units){
+	public static int getWinner(double datax, double datay , double[][] units){
 		int winnerIndex = 0;
 		double minDistance =  Double.POSITIVE_INFINITY;
 		for (int i = 0; i < units[0].length; i++) {
-			double datax = data[0][i];
-			double datay = data[1][i];
 			double currentDistance = getDistance(datax, datay, units[0][i],units[1][i]);
 			if (currentDistance< minDistance) {
 				winnerIndex = i;
