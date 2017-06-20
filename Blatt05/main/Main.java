@@ -1,4 +1,5 @@
 package main;
+import java.awt.Color;
 import java.util.Random;
 
 import org.jfree.chart.ChartFactory;
@@ -101,8 +102,29 @@ public class Main {
 		//Visualisierung
 		
 		DefaultXYDataset dataset = new DefaultXYDataset();
+		
+		//Punkte 100,...,1000
+		double[][] stepdata = new double[2][10];
+	
+		for (int i = 0; i < 10; i++) {
+			stepdata[0][i] = data[0][(i+1)*100];
+			stepdata[1][i] = data[1][(i+1)*100];
+		}
+		
+		//Winner Units zu Punkten
+		double[][] winners = new double[2][10];
+		
+		for (int i = 0; i < 10; i++) {
+			winners[0][i] = units[0][getWinner(data[0][(i+1)*100],data[1][(i+1)*100],units)];
+			winners[1][i] = units[1][getWinner(data[0][(i+1)*100],data[1][(i+1)*100],units)];
+		}
+		
+		dataset.addSeries("Winner-Units",winners);
 		dataset.addSeries("SOM-Units", units);
+		dataset.addSeries("Daten 100,..,1000", stepdata);
 		dataset.addSeries("2D-Datenpunkte", data);
+
+
 		
 		JFreeChart chart = ChartFactory.createScatterPlot("Übung 5", "x", "y", dataset);
 
@@ -110,8 +132,15 @@ public class Main {
 		
 		XYPlot plot = (XYPlot) chart.getPlot();
         XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
-        renderer.setSeriesLinesVisible(0, true);
-        renderer.setSeriesLinesVisible(1, false);
+
+        renderer.setSeriesPaint(0, Color.YELLOW);
+        renderer.setSeriesPaint(1, Color.RED);
+        renderer.setSeriesPaint(2, Color.GREEN);
+		renderer.setSeriesPaint(3, Color.BLUE);
+        renderer.setSeriesLinesVisible(0, false);
+        renderer.setSeriesLinesVisible(1, true);
+        renderer.setSeriesLinesVisible(2, false);
+        renderer.setSeriesLinesVisible(3, false);
         plot.setRenderer(renderer);
         
 		frame.setVisible(true);
