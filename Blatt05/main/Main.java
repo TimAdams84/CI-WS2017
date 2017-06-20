@@ -78,7 +78,7 @@ public class Main {
 		
 		
 		//Training	
-		units = training(data,units,100,0.02);				
+		units = training(data,units,100,1);				
 		
 		
 		
