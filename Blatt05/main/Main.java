@@ -1,5 +1,8 @@
 package main;
 import java.awt.Color;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
 import org.jfree.chart.ChartFactory;
@@ -31,17 +34,19 @@ public class Main {
 	}
 	
 	public static double sigma(int currentIteration, int finalIteration){
-		double start = 0.5;
+		double start = 0.9;
 		double end = 0.1;
 		return start*Math.pow((end/start),((double)currentIteration/finalIteration));
 	}
 			
 	public static double[][] training(double[][] data,double[][] units,int iterations, double learningrate){
+		//daten randomisiert
+		List<double[]> list = Arrays.asList(data);
+		Collections.shuffle(list);
+		list.toArray(data);
 		for(int i=0;i<iterations;i++){
 			for(int j=0; j<data[0].length;j++){
 			int winner=getWinner(data[0][j],data[1][j],units);
-			double tempx = units[0][winner];
-			double tempy = units[1][winner];
 				for(int k=0;k<units[0].length;k++){
 					double temp = learningrate*Math.exp(-1*Math.pow(Math.abs(winner-k),2)/2*Math.pow(sigma(i, iterations),2));
 					units[0][k]+= temp*(data[0][j]-units[0][k]);
@@ -77,8 +82,9 @@ public class Main {
 		}
 		
 		
-		//Training	
-		units = training(data,units,100,0.001);				
+		
+		
+		units = training(data,units,100,0.01);			
 		
 		
 		
@@ -125,7 +131,7 @@ public class Main {
         plot.setRenderer(renderer);
         
 		frame.setVisible(true);
-		frame.setSize(800, 600);	
+		frame.setSize(800, 600);
 
 	}
 
