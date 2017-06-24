@@ -117,7 +117,52 @@ public class Main {
 		
 		//6.4
 		
+		error = Double.POSITIVE_INFINITY;
+		double [] tempVariables2 = new double[7];
+		double [][] tempApprox2 = new double[2][1001];
 		
+		for (int i = 0; i < 100; i++) {
+
+			tempVariables = variables;	
+			for (int j = 0; j < 7; j++) {
+				double random = -3 + new Random().nextDouble()*6;	
+				tempVariables[j] = random;
+			}	
+		
+			for (int j = 0; j < 1000; j++) {
+				
+				tempVariables2 = tempVariables;
+				for (int k = 0; k < 7; k++) {
+					double random = -0.1 + new Random().nextDouble()*0.2;
+					tempVariables2[k] += random;					
+				}
+				tempApprox2 = reloadPoly(tempVariables2);
+				if(getAbsoluteError(function, tempApprox2)<error){
+					tempApprox = tempApprox2;
+					tempVariables = tempVariables2;
+					error = getAbsoluteError(function, tempApprox2);
+					System.out.println(getAbsoluteError(function, tempApprox2));
+					}
+				
+			} 
+			//Funktion mit neuen variablen plotten
+			tempApprox = reloadPoly(tempVariables);		
+			//falls Error sich verbessert, Variablen und Polynom aktualisieren			
+			if(error>getAbsoluteError(function,tempApprox)){
+				approx = tempApprox;
+				variables = tempVariables;
+				error = getAbsoluteError(function,tempApprox);
+				System.out.println("New Error: "+error);
+			}
+			System.out.println(i+"%");
+		}
+		
+		error = getAbsoluteError(function,approx);
+		System.out.println("6.4 Error: "+error);
+		for (int i = 0; i < variables.length; i++) {
+			System.out.println("Variable a"+i+": "+variables[i]);
+			
+		}
 		
 	
 		
