@@ -54,7 +54,7 @@ public class Main {
 		for (int i = 0; i < function[0].length-1; i++) {
 			double x = -10+0.02*i;
 			function[0][i] = x;
-			function[1][i] = -4*Math.cos((x)/3)+Math.sin(15/(Math.abs(0.5*(x))+1))+0.2*(x);
+			function[1][i] = -4*Math.cos((x)/3)+Math.sin(15/(Math.abs(0.5*(x)+2)+1))+0.2*(x);
 			approx = reloadPoly(variables);
 		}
 		double error = getAbsoluteError(function,approx);
