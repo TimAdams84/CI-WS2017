@@ -34,7 +34,7 @@ public class Main {
 	}
 	
 	public static double sigma(int currentIteration, int finalIteration){
-		double start = 3;
+		double start = 4;
 		double end = 1;
 		return start*Math.pow((end/start),((double)currentIteration/finalIteration));
 	}

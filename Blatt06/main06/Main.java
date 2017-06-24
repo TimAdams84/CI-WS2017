@@ -107,7 +107,7 @@ public class Main {
 		DefaultXYDataset dataset2 = new DefaultXYDataset();
 		
 		dataset2.addSeries("f(x)",function);
-		dataset2.addSeries("g(x)", approx);		
+//		dataset2.addSeries("g(x)", approx);		
 		JFreeChart chart2 = ChartFactory.createScatterPlot("Aufgabe 6.3", "x", "y", dataset2);
 		ChartFrame frame2 = new ChartFrame("Übung 6", chart2);		
 
