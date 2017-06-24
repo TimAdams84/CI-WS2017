@@ -34,8 +34,8 @@ public class Main {
 	}
 	
 	public static double sigma(int currentIteration, int finalIteration){
-		double start = 0.9;
-		double end = 0.1;
+		double start = 3;
+		double end = 1;
 		return start*Math.pow((end/start),((double)currentIteration/finalIteration));
 	}
 			
@@ -84,7 +84,7 @@ public class Main {
 		
 		
 		
-		units = training(data,units,100,0.001);			
+		units = training(data,units,1000,0.01);			
 		
 		
 		
