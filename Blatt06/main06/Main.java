@@ -106,8 +106,7 @@ public class Main {
 		//VISUALISIERUNG
 		DefaultXYDataset dataset2 = new DefaultXYDataset();
 		
-		dataset2.addSeries("f(x)",function);
-//		dataset2.addSeries("g(x)", approx);		
+		dataset2.addSeries("g(x)", approx);		
 		JFreeChart chart2 = ChartFactory.createScatterPlot("Aufgabe 6.3", "x", "y", dataset2);
 		ChartFrame frame2 = new ChartFrame("Übung 6", chart2);		
 
@@ -154,17 +153,24 @@ public class Main {
 				error = getAbsoluteError(function,tempApprox);
 				System.out.println("New Error: "+error);
 			}
-			System.out.println(i+"%");
+			System.out.println(i+"% fertig");
 		}
-		
-		error = getAbsoluteError(function,approx);
+		approx = reloadPoly(tempVariables);
 		System.out.println("6.4 Error: "+error);
 		for (int i = 0; i < variables.length; i++) {
-			System.out.println("Variable a"+i+": "+variables[i]);
+			System.out.println("Variable a"+i+": "+tempVariables[i]);
 			
 		}
 		
-	
+		//VISUALISIERUNG
+		DefaultXYDataset dataset3 = new DefaultXYDataset();
+		
+		dataset3.addSeries("g(x)", approx);		
+		JFreeChart chart3 = ChartFactory.createScatterPlot("Aufgabe 6.4", "x", "y", dataset3);
+		ChartFrame frame3 = new ChartFrame("Übung 6", chart3);		
+
+		frame3.setVisible(true);
+		frame3.setSize(800, 600);
 		
 		
 		
