@@ -9,6 +9,7 @@
 	<classpathentry kind="src" path="Blatt04"/>
 	<classpathentry kind="src" path="Blatt05"/>
 	<classpathentry kind="src" path="Blatt06"/>
+	<classpathentry kind="src" path="Blatt07"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
